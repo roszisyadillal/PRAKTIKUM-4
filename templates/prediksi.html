@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2> Sistem Pakar Diagnosis Penyakit Dermatitis Imun menggunakan Teorema Bayes </h2>
+    <br>
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor%}
+    <h3>Pilih gejala yang dialami pasien!</h3>
+    <form action="{{url_for('prediksi')}}" method="POST">
+      {{ form.csrf_token }}
+      {{ form.pilih }}
+      <br>
+      <button type="submit" class="btn btn-secondary">Diagnosa</button>
+    </form>
+        <br>
+        <h2>Hasil Identifikasi</h2><br>
+        <h3>Daftar Gejala</h3>
+        {% for i in data%}
+        <li> {{ i }} </li>
+        {% endfor %}
+        
+        <h3>Hasil: {{ hasil }}</h3>
+      
+        <h3>Nilai Probabilitas: {{ peluang }}% </h3>
+        
+{% endblock content %}

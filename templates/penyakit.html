@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <h2> Data Penyakit Dermatitis Imun </h2><br>
+    <form action="{{url_for('insertPenyakit')}}" method="post"> 
+        <button type="submit" class="btn btn-secondary">Tambah Penyakit</button>
+    </form> <br>
+    {% for message in get_flashed_messages() %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor%}
+      
+      <table id="customers">
+        <tr>
+            <th>Kode Penyakit</th>
+            <th>Nama Penyakit</th>
+            <th>Aksi</th>
+        </tr>
+        {% for p in data %}
+        <tr>
+            <td>{{ p.kd_penyakit }}</td>
+            <td><a href="{{ url_for('updatePenyakit', id=p.kd_penyakit) }}"> {{ p.nama_penyakit }}</a></td>
+            <td>
+                <form action="{{ url_for('deletePen', id=p.kd_penyakit)}}" method="post"> 
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                    </form>
+            </td>
+            {% endfor %}
+        </tr>
+      </table>
+{% endblock content %}

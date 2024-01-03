@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2> Update Data Aturan Dermatitis Imun </h2><br>
+{% for message in get_flashed_messages() %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor%}
+
+<form action="/updateAturan/{{ data_update.id }}" method="post" >
+    <fieldset class="form-group">
+        <dir class="form-group">
+            <label class="form-control-label">Kode Penyakit</label> <br>
+            <input type="text" id="kd_penyakit" name="kd_penyakit" class="form-control form-control-lg" value={{data_update.kd_penyakit}}>
+            <br>
+            <label class="form-control-label">Kode Gejala</label> <br>
+            <input type="text" id="kd_gejala" name="kd_gejala" class="form-control form-control-lg" value={{data_update.kd_gejala}}>
+            <br>
+            <label class="form-control-label">Probabilitas</label> <br>
+            <input type="text" id="probabilitas" name="probabilitas" class="form-control form-control-lg" value={{data_update.probabilitas}}>
+            <br>
+            
+            <input type="submit" id="updateAturan" name="updateAturan" class="btn btn-secondary">
+        </dir>   
+    </fieldset>
+</form>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2> Update Data Penyakit Dermatitis Imun </h2><br>
+{% for message in get_flashed_messages() %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor%}
+
+<form action="/updatePenyakit/{{ data_update.kd_penyakit }}" method="post" >
+    <fieldset class="form-group">
+        <dir class="form-group">
+            <label class="form-control-label">Nama Penyakit</label> <br>
+            <input type="text" id="nama_penyakit" name="nama_penyakit" class="form-control form-control-lg" value={{data_update.nama_penyakit}}>
+            <br>
+            
+            <input type="submit" id="updatePenyakit" name="updatePenyakit" class="btn btn-secondary">
+        </dir>   
+    </fieldset>
+</form>
+{% endblock content %}

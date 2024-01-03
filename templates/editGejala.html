@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2> Update Data Gejala Dermatitis Imun </h2><br>
+{% for message in get_flashed_messages() %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor%}
+
+<form action="/updateGejala/{{ data_update.kd_gejala }}" method="post" >
+    <fieldset class="form-group">
+        <dir class="form-group">
+            <label class="form-control-label">Gejala</label> <br>
+            <input type="text" id="gejala" name="gejala" class="form-control form-control-lg" value={{data_update.gejala}}>
+            <br>
+            
+            <input type="submit" id="updateGejala" name="updateGejala" class="btn btn-secondary">
+        </dir>   
+    </fieldset>
+</form>
+{% endblock content %}
